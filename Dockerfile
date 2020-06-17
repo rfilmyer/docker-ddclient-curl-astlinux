@@ -21,8 +21,9 @@ RUN \
         /usr/bin/ddclient                              \
   && cp /tmp/ddclient-curl-master/contrib/get-ipv6-from-ipv4/get-ipv6-from-ipv4.pl       \
         /usr/bin/                                      \
+  && chmod +x /usr/bin/ddclient                        \
   && echo "Cleaning Up..."                             \
   && rm -rf /tmp/*
 
-CMD ["ddclient"]
+CMD ["/usr/bin/ddclient", "-file", "/config/ddclient.conf"]
 VOLUME /config
